@@ -147,7 +147,7 @@ $httpClient.get(nCoVdata, function(error, response, data){
         console.log(obj);
         var title = "全国疫情信息概览:"
         var generalRemark = obj.results[0].generalRemark;
-        var Count(Incr) = "新增确诊: " + obj.results[0].currentConfirmedCount(Incr) + "  累计确诊: " + obj.results[0].confirmedCount + "  治愈: " + obj.results[0].curedCount + "  死亡: " + obj.results[0].deadCount + "\n";
+        var Count(Incr) = "新增确诊: " + obj.results[0].currentConfirmedCount(Incr) + "  累计确诊: " + obj.results[0].globalStatistics[0].confirmedCount + "  治愈: " + obj.results[0].globalStatistics[0].curedCount + "  死亡: " + obj.results[0].globalStatistics[0].deadCount + "\n";
         let nCoV = [title,generalRemark,Count(Incr)];
         $notification.post(nCoV[0], nCoV[1],nCoV[2]);
         $done();
