@@ -29,7 +29,7 @@ $httpClient.get(newData, function (error, response, data) {
 );
 
 /*****************************************************************
-# 全国疫情速看 (By Mazetsz)
+# 全国疫情速看 (By Mazetsz)0
 [Task]
 # 在每天 9:00 报告新冠肺炎疫情
 0 9 * * * nCoV.js
