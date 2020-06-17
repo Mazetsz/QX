@@ -142,7 +142,6 @@ const newData = encodeURI("https://lab.isaaclin.cn/nCoV/api/news?page=1&num=1")
 $httpClient.get(newData, function (error, response, data) {
     if (error) {
         console.log(error);
-        $done();
     } else {
         console.log(data); 
         var obj1 = JSON.parse(data);
@@ -150,7 +149,6 @@ $httpClient.get(newData, function (error, response, data) {
         $httpClient.get(nCoVdata, function (error, response, data) {
             if (error) {
                 console.log(error);
-                $done();
             } else {
                 console.log(data); 
                 var obj = JSON.parse(data);
