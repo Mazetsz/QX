@@ -145,8 +145,8 @@ $httpClient.get(newData, function (error, response, data) {
         console.log(error);
         $done();
     } else {
-        let obj = JSON.parse(data);
-        let newObj = obj.results[0];
+        let obj1 = JSON.parse(data);
+        let newObj = obj1.results[0];
         console.log(newObj);
         $httpClient.get(nCoVdata, function (error, response, data) {
             if (error) {
