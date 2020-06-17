@@ -147,6 +147,7 @@ $httpClient.get(nCoVdata, function (error, response, data) {
         $httpClient.get(newData, function (error, response, data) {
             if (error) {
                 console.log(error);
+                resolve();
             } else {
                 console.log(data); 
                 let obj1 = JSON.parse(data);
