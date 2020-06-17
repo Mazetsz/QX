@@ -139,7 +139,6 @@ if (isSurge) {
 // #endregion
 const nCoVdata = encodeURI("https://lab.isaaclin.cn/nCoV/api/overall?latest=1")
 const newData = encodeURI("https://lab.isaaclin.cn/nCoV/api/news?page=1&num=1")
-let newObj;
 $httpClient.get(newData, function (error, response, data) {
     if (error) {
         console.log(error);
@@ -147,23 +146,23 @@ $httpClient.get(newData, function (error, response, data) {
     } else {
         var obj = JSON.parse(data);
         console.log(obj);
-        newObj = obj.results[0];
-        $done();
-    }
-}
-);
-$httpClient.get(nCoVdata, function (error, response, data) {
-    if (error) {
-        console.log(error);
-        $done();
-    } else {
-        var obj = JSON.parse(data);
-        console.log(obj);
-        var title = "全国疫情信息概览:"
-        var generalRemark = newObj.title;
-        var Count = newObj.summary + "\n新增确诊: " + obj.results[0].currentConfirmedCount + "\n累计确诊: " + obj.results[0].confirmedCount + "\n治愈: " + obj.results[0].curedCount + "\n死亡: " + obj.results[0].deadCount;
-        let nCoV = [title, generalRemark, Count];
-        $notification.post(nCoV[0], nCoV[1], nCoV[2]);
+        let newObj = obj.results[0];
+        $httpClient.get(nCoVdata, function (error, response, data) {
+            if (error) {
+                console.log(error);
+                $done();
+            } else {
+                var obj = JSON.parse(data);
+                console.log(obj);
+                var title = "全国疫情信息概览:"
+                var generalRemark = newObj.title;
+                var Count = newObj.summary + "\n新增确诊: " + obj.results[0].currentConfirmedCount + "\n累计确诊: " + obj.results[0].globalStatistics.confirmedCount + "\n治愈: " + obj.results[0].globalStatistics.curedCount + "\n死亡: " + obj.results[0].globalStatistics.deadCount;
+                let nCoV = [title, generalRemark, Count];
+                $notification.post(nCoV[0], nCoV[1], nCoV[2]);
+                $done();
+            }
+        }
+        );
         $done();
     }
 }
