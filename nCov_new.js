@@ -156,7 +156,7 @@ $httpClient.get(newData, function (error, response, data) {
                 let obj = JSON.parse(data);
                 let title = "【全国疫情信息概览】"
                 let subTitle = "\n"
-                let detail = "「数据统计」" + "\n    -新增确诊: "+ obj.results[0].currentConfirmedIncr + "\n    -现有确诊: " + obj.results[0].currentConfirmedCount + "\n    -累计确诊: " + obj.results[0].confirmedCount + "\n    -治愈: " + obj.results[0].curedCount + "\n    -死亡: " + obj.results[0].deadCount + "\n\n「疫情动态」\n     " + newObj.title +"\n\n「动态详情」\n     "+ newObj.summary;
+                let detail = "「数据统计」" + "\n\n    -新增确诊: "+ obj.results[0].currentConfirmedIncr + "\n    -现有确诊: " + obj.results[0].currentConfirmedCount + "\n    -累计确诊: " + obj.results[0].confirmedCount + "\n    -治愈: " + obj.results[0].curedCount + "\n    -死亡: " + obj.results[0].deadCount + "\n\n「疫情动态」\n\n     " + newObj.title +"\n\n「动态详情」\n\n     "+ newObj.summary;
                 let nCoV = [title, subTitle, detail];
                 $notification.post(nCoV[0], nCoV[1], nCoV[2]);
                 $done();
