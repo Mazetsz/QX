@@ -148,8 +148,8 @@ $httpClient.get(newData, function (error, response, data) {
     }
  })
 function requestInfo(response){
-        let obj = JSON.parse(response);
-        let newObj = obj.results[0];
+        var obj1 = JSON.parse(response);
+        var newObj = obj1.results[0];
         console.log(newObj);
         $done();
         $httpClient.get(nCoVdata, function (error, response, data) {
@@ -157,7 +157,7 @@ function requestInfo(response){
                 console.log(error);
                 $done();
             } else {
-                let obj = JSON.parse(data);
+                var obj = JSON.parse(data);
                 let title = "【全国疫情信息概览】"
                 let subTitle = "\n"
                 let detail = "「数据统计」" + "\n\n    -新增确诊: "+ obj.results[0].currentConfirmedIncr + "\n    -现有确诊: " + obj.results[0].currentConfirmedCount + "\n    -累计确诊: " + obj.results[0].confirmedCount + "\n    -治愈: " + obj.results[0].curedCount + "\n    -死亡: " + obj.results[0].deadCount + "\n\n「疫情动态」\n\n     " + newObj.title +"\n\n「动态详情」\n\n     "+ newObj.summary;
