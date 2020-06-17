@@ -144,14 +144,15 @@ $httpClient.get(newData, function (error, response, data) {
         console.log(error);
         $done();
     } else {
+        console.log(data); 
         var obj1 = JSON.parse(data);
         let newObj = obj1.results[0];
-        console.log(newObj);
         $httpClient.get(nCoVdata, function (error, response, data) {
             if (error) {
                 console.log(error);
                 $done();
             } else {
+                console.log(data); 
                 var obj = JSON.parse(data);
                 var tit = "【全国疫情信息概览】"
                 var subTit = "\n"
