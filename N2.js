@@ -154,9 +154,9 @@ $httpClient.get(newData, function (error, response, data) {
                 $done();
             } else {
                 var obj = JSON.parse(data);
-                var title = "全国疫情信息概览:"
-                var generalRemark = newObj.title;
-                var Count = "新增确诊: " + obj.results[0].currentConfirmedCount + "\n累计确诊: " + obj.results[0].globalStatistics.confirmedCount + "\n治愈: " + obj.results[0].globalStatistics.curedCount + "\n死亡: " + obj.results[0].globalStatistics.deadCount + "\n疫情动态:\n" + newObj.title +"\n"+ newObj.summary;
+                var title = "全国疫情信息概览"
+                var subTitle = "「数据统计」"
+                var Count = "新增确诊: " + obj.results[0].currentConfirmedCount + "\n累计确诊: " + obj.results[0].confirmedCount + "\n治愈: " + obj.results[0].curedCount + "\n死亡: " + obj.results[0].deadCount + "\n\n「疫情动态」\n" + newObj.title +"\n"+ newObj.summary;
                 let nCoV = [title, generalRemark, Count];
                 $notification.post(nCoV[0], nCoV[1], nCoV[2]);
                 $done();
