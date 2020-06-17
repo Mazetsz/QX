@@ -136,24 +136,25 @@ if (isSurge) {
         $notification.post(title, subTitle, detail);
     }
 }
+
 // #endregion
 const nCoVdata = encodeURI("https://lab.isaaclin.cn/nCoV/api/overall?latest=1")
 const newData = encodeURI("https://lab.isaaclin.cn/nCoV/api/news?page=1&num=1")
+let newObj;
 $httpClient.get(newData, function (error, response, data) {
     if (error) {
         console.log(error);
         $done();
     } else {
         var obj = JSON.parse(data);
-        console.log(obj);
-        let newObj = obj.results[0];
+        newObj = obj.results[0];
+        console.log(newObj);
         $httpClient.get(nCoVdata, function (error, response, data) {
             if (error) {
                 console.log(error);
                 $done();
             } else {
                 var obj = JSON.parse(data);
-                console.log(obj);
                 var title = "全国疫情信息概览:"
                 var generalRemark = newObj.title;
                 var Count = newObj.summary + "\n新增确诊: " + obj.results[0].currentConfirmedCount + "\n累计确诊: " + obj.results[0].globalStatistics.confirmedCount + "\n治愈: " + obj.results[0].globalStatistics.curedCount + "\n死亡: " + obj.results[0].globalStatistics.deadCount;
