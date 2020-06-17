@@ -146,11 +146,9 @@ $httpClient.get(newData, function (error, response, data) {
     } else {
         requestInfo(data);
     }
- }
- );
-
-  function requestInfo(response){
-        let obj1 = JSON.parse(data);
+ })
+function requestInfo(response){
+        let obj = JSON.parse(response);
         let newObj = obj.results[0];
         console.log(newObj);
         $done();
@@ -168,7 +166,7 @@ $httpClient.get(newData, function (error, response, data) {
                 $done();
             }
         });
-        
+        }
 
 /*****************************************************************
 # 全国疫情速看 (By Mazetsz)
