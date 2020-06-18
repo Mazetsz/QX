@@ -41,7 +41,8 @@ const headers = {
     headers,
   }).then((resp) => JSON.parse(resp.body).results[0]);
   $.log(news);
-  let summary_s = news.summary.split('。')[0];
+  var str = news.summary;
+      str = str.match(/(\S*)。/)[1];
   let title = `🗞【疫情信息概览】🇨🇳 ${province}`;
   let subtitle = `🗓 ${formatTime()}`;
   let detail = 
@@ -61,7 +62,7 @@ const headers = {
     "\n\n「动态详情」\n\n     " +
     Gnews.summary +
     "\n\n「省内聚焦」\n\n     " +
-    summary_s;
+    str;
   $.notify(title, subtitle, detail);
 })()
   .catch((err) => $.error(err))
