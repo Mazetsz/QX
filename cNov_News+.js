@@ -63,7 +63,7 @@ const headers = {
     "\n\n「动态详情」\n\n     " +
     Gnews.summary +
     "\n\n「省内聚焦」\n\n     " +
-    str;
+    news.summary;
   $.notify(title, subtitle, detail);
 })()
   .catch((err) => $.error(err))
