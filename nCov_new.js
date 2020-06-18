@@ -1,7 +1,7 @@
 /**
  *  疫情日报，API来自 https://lab.isaaclin.cn
  *  @author: Peng-YM , Ark
- *  更新地址: https://raw.githubusercontent.com/Peng-YM/QuanX/master/Tasks/nCov.js
+ *  更新地址: https://github.com/Mazetsz/QX/blob/master/nCov_new.js
  */
 
 const $ = API("nCov");
