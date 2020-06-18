@@ -140,18 +140,17 @@ if (isSurge) {
 // #endregion
 const nCoVdata = encodeURI("https://lab.isaaclin.cn/nCoV/api/overall?latest=1")
 const newData = encodeURI("https://lab.isaaclin.cn/nCoV/api/news?page=1&num=1")
-    function requestInfo1(response) {
     $httpClient.get(newData, function (error, response, data) {
          if (error) {
             console.log(error);
             $done();
        } else {
-        setTimeout(requestInfo1(data), 1000);
-                  }
-         });
-    }
-    
-    function requestInfo2(response) {
+        setTimeout(requestInfo(data), 1000);
+           $done();
+           console.log(data);
+              }
+         });    
+    function requestInfo(response) {
         let obj = JSON.parse(data);
         let newObj = obj.results[0];
         console.log(newObj);
