@@ -41,7 +41,7 @@ const headers = {
     headers,
   }).then((resp) => JSON.parse(resp.body).results[0]);
   $.log(news);
-  console.log(Gnews);
+  console.log(news);
   var str = news.summary;
       str = str.match(/(\S*)。/)[1];
   let title = `🗞【疫情信息概览】🇨🇳 ${province}`;
