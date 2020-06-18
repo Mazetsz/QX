@@ -44,10 +44,10 @@ const headers = {
   console.log(news);
   var str = news.summary;
       str = str.match(/(\S*)。/)[1];
-  let title = `🗞【疫情信息概览】🇨🇳 ${province}`;
-  let subtitle = `🗓 ${formatTime()}`;
+  let title = `【疫情信息概览】${formatTime()}`;
+  let subtitle = `「聚焦定位」🇨🇳 ${province}`;
   let detail = 
-    "\n「全国数据统计」" +
+    "\n「全国数据」" +
     "\n\n    -新增确诊: " +
     overall.currentConfirmedIncr +
     "\n    -现有确诊: " +
