@@ -25,19 +25,26 @@ const headers = {
   const overall = await $.get({
     url: "https://lab.isaaclin.cn/nCoV/api/overall?latest=1",
     headers,
-  })
-    .then((resp) => JSON.parse(resp.body).results[0])
+  }).then((resp) => JSON.parse(resp.body).results[0])
     .delay(1000);
   $.log(overall);
+
+  const Gnews = await $.get({
+  url: `https://lab.isaaclin.cn/nCoV/api/news?page=1&num=1}`,
+  headers,
+  }).then((resp) => JSON.parse(resp.body).results[0])
+    .delay(1000);
+  $.log(Gnews);
+  
   const news = await $.get({
     url: `https://lab.isaaclin.cn/nCoV/api/news?page=1&num=1&province=${encodeURIComponent(province)}`,
     headers,
   }).then((resp) => JSON.parse(resp.body).results[0]);
   $.log(news);
-
-  let title = `🗞【疫情日报】🇨🇳 ${province}`;
+  let summary_s = news.summary.split('。')[0];
+  let title = `🗞【疫情信息概览】🇨🇳 ${province}`;
   let subtitle = `🗓 ${formatTime()}`;
-  let detail =
+  let detail = 
     "\n「全国数据统计」" +
     "\n\n    -新增确诊: " +
     overall.currentConfirmedIncr +
@@ -50,9 +57,11 @@ const headers = {
     "\n    -死亡: " +
     overall.deadCount +
     "\n\n「疫情动态」\n\n     " +
-    news.title +
+    Gnews.title +
     "\n\n「动态详情」\n\n     " +
-    news.summary;
+    Gnews.summary +
+    "\n\n「省内聚焦」\n\n     " +
+    summary_s;
   $.notify(title, subtitle, detail);
 })()
   .catch((err) => $.error(err))
@@ -62,7 +71,7 @@ function formatTime() {
     const date = new Date();
     return `${
         date.getMonth() + 1
-    }月${date.getDate()}日${date.getHours()}时`;
+    }月${date.getDate()}日 ${date.getHours()}时`;
 }
 
 // prettier-ignore
