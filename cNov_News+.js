@@ -45,7 +45,7 @@ const headers = {
   var str = news.summary;
       str = str.match(/(\S*)。/)[1];
   let title = `【疫情信息概览】${formatTime()}`;
-  let subtitle = `Location: 🇨🇳 ${province}`;
+  let subtitle = `  -Location: 🇨🇳 ${province}`;
   let detail = 
     "\n「全国数据」" +
     "\n\n    -新增确诊: " +
