@@ -28,19 +28,20 @@ const headers = {
   }).then((resp) => JSON.parse(resp.body).results[0])
     .delay(1000);
   $.log(overall);
-
+  console.log(overall);
   const Gnews = await $.get({
   url: `https://lab.isaaclin.cn/nCoV/api/news?page=1&num=1}`,
   headers,
   }).then((resp) => JSON.parse(resp.body).results[0])
     .delay(1000);
   $.log(Gnews);
-  
+  console.log(Gnews);
   const news = await $.get({
     url: `https://lab.isaaclin.cn/nCoV/api/news?page=1&num=1&province=${encodeURIComponent(province)}`,
     headers,
   }).then((resp) => JSON.parse(resp.body).results[0]);
   $.log(news);
+  console.log(Gnews);
   var str = news.summary;
       str = str.match(/(\S*)。/)[1];
   let title = `🗞【疫情信息概览】🇨🇳 ${province}`;
