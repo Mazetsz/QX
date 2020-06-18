@@ -6,6 +6,7 @@
  *  更新地址: https://raw.githubusercontent.com/Peng-YM/QuanX/master/Tasks/nCov.js
  */
 
+
 const $ = API("nCov");
 
 const key = "NOUBZ-7BNHD-SZ64A-HUWCW-YBGZ7-DDBNK";
