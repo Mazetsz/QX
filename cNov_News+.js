@@ -140,14 +140,22 @@ if (isSurge) {
 // #endregion
 const nCoVdata = encodeURI("https://lab.isaaclin.cn/nCoV/api/overall?latest=1")
 const newData = encodeURI("https://lab.isaaclin.cn/nCoV/api/news?page=1&num=1")
-$httpClient.get(newData, function (error, response, data) {
-    if (error) {
-        console.log(error);
-        $done();
-    } else {
+    function requestInfo1(response) {
+    $httpClient.get(newData, function (error, response, data) {
+         if (error) {
+            console.log(error);
+            $done();
+       } else {
+        setTimeout(requestInfo1(data), 1000);
+                  }
+         });
+    }
+    
+    function requestInfo2(response) {
         let obj = JSON.parse(data);
         let newObj = obj.results[0];
         console.log(newObj);
+        $done();
         $httpClient.get(nCoVdata, function (error, response, data) {
             if (error) {
                 console.log(error);
@@ -161,16 +169,12 @@ $httpClient.get(newData, function (error, response, data) {
                 $notification.post(nCoV[0], nCoV[1], nCoV[2]);
                 $done();
             }
+        });
         }
-        );
-        $done();
-    }
-}
-);
 
 /*****************************************************************
-# 全国疫情速看 (By Mazetsz)
+# 全国疫情速看 (By Mazetsz&Ark)
 [Task]
-# 在每天 9:00 报告新冠肺炎疫情
+# 在每 4小时 报告新冠肺炎疫情
 0 9 * * * nCoV.js
 *****************************************************************/
