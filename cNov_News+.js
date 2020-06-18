@@ -30,7 +30,7 @@ const headers = {
   $.log(overall);
   console.log(overall);
   const Gnews = await $.get({
-  url: `https://lab.isaaclin.cn/nCoV/api/news?page=1&num=1}`,
+  url: "https://lab.isaaclin.cn/nCoV/api/news?page=1&num=1",
   headers,
   }).then((resp) => JSON.parse(resp.body).results[0])
     .delay(1000);
