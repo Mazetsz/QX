@@ -1,6 +1,6 @@
 /**
  *  疫情日报，API来自 https://lab.isaaclin.cn
- *  @author: Peng-YM , Ark
+ *  @author: Peng-YM
  *  更新地址: https://github.com/Mazetsz/QX/blob/master/nCov_new.js
  */
 
