@@ -147,7 +147,6 @@ const newData = encodeURI("https://lab.isaaclin.cn/nCoV/api/news?page=1&num=1")
        } else {
         setTimeout(requestInfo(data), 1000);
            $done();
-           console.log(data);
               }
          });    
     function requestInfo(response) {
