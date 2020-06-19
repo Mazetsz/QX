@@ -30,7 +30,7 @@ const headers = {
   $.log(newslist);
   console.log(newslist);
   let desc = newslist.desc;
-  let news = newslist.news;
+  let news = newslist.news[0];
   let title = `【疫情信息概览】${formatTime()}`;
   let subtitle = `  -Location: 🇨🇳 ${province}`;
   let detail = 
