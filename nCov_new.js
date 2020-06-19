@@ -31,8 +31,8 @@ const headers = {
   console.log(newslist);
   let desc = newslist.desc;
   let news = newslist.news[0];
-  let title = `【疫情信息概览】${formatTime()}`;
-  let subtitle = `  -Location: 🇨🇳 ${province}`;
+  let title = "🗞【疫情信息概览】";
+  let subtitle = `🇨🇳 ${province} ${formatTime()}`;
   let detail = 
     "\n「全国数据」" +
     "\n\n    -新增确诊: " +
@@ -49,7 +49,7 @@ const headers = {
     news.title +
     "\n\n「动态详情」\n\n     " +
     news.summary +
-    "\n\n    发布时间:" +
+    "\n\n    发布时间：" +
     news.pubDateStr;
   $.notify(title, subtitle, detail);
 })()
