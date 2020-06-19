@@ -21,8 +21,8 @@ const headers = {
     return data.result.ad_info.province;
   });
   $.log(province);
-
-  const overall = await $.get({
+  console.log(province);
+  const newslist = await $.get({
     url: "http://api.tianapi.com/txapi/ncov/index?key=5dcf1a3871f36bcc48c543c8193223fc",
     headers,
   }).then((resp) => JSON.parse(resp.body).newslist[0])
