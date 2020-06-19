@@ -23,47 +23,34 @@ const headers = {
   $.log(province);
 
   const overall = await $.get({
-    url: "https://lab.isaaclin.cn/nCoV/api/overall?latest=1",
+    url: "http://api.tianapi.com/txapi/ncov/index?key=5dcf1a3871f36bcc48c543c8193223fc",
     headers,
   }).then((resp) => JSON.parse(resp.body).results[0])
     .delay(1000);
   $.log(overall);
   console.log(overall);
-  const Gnews = await $.get({
-  url: "https://lab.isaaclin.cn/nCoV/api/news?page=1&num=1",
-  headers,
-  }).then((resp) => JSON.parse(resp.body).results[0])
-    .delay(1000);
-  $.log(Gnews);
-  console.log(Gnews);
-  const news = await $.get({
-    url: `https://lab.isaaclin.cn/nCoV/api/news?page=1&num=1&province=${encodeURIComponent(province)}`,
-    headers,
-  }).then((resp) => JSON.parse(resp.body).results[0]);
-  $.log(news);
-  console.log(news);
-  var str = news.summary;
-      str = str.match(/(\S*)。/)[1];
+  let desc = newslist.desc;
+  let news = newslist.news;
   let title = `【疫情信息概览】${formatTime()}`;
   let subtitle = `  -Location: 🇨🇳 ${province}`;
   let detail = 
     "\n「全国数据」" +
     "\n\n    -新增确诊: " +
-    overall.currentConfirmedIncr +
+    overall.desc.confirmedIncr +
     "\n    -现有确诊: " +
-    overall.currentConfirmedCount +
+    overall.desc.currentConfirmedCount +
     "\n    -累计确诊: " +
-    overall.confirmedCount +
+    overall.desc.confirmedCount +
     "\n    -治愈: " +
-    overall.curedCount +
+    overall.desc.curedCount +
     "\n    -死亡: " +
-    overall.deadCount +
+    overall.desc.deadCount +
     "\n\n「疫情动态」\n\n     " +
-    Gnews.title +
+    news.title +
     "\n\n「动态详情」\n\n     " +
-    Gnews.summary +
-    "\n\n「省内聚焦」\n\n     " +
-    str;
+    news.summary +
+    "\n\n「发布时间」 " +
+    news.pubDateStr;
   $.notify(title, subtitle, detail);
 })()
   .catch((err) => $.error(err))
