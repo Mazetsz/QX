@@ -49,7 +49,7 @@ const headers = {
     news.title +
     "\n\n「动态详情」\n\n     " +
     news.summary +
-    "\n\n「发布时间」 " +
+    "\n\n    发布时间:" +
     news.pubDateStr;
   $.notify(title, subtitle, detail);
 })()
